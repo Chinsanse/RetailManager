@@ -48,7 +48,7 @@ namespace RMDesktopUI
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            DisplayRootViewForAsync<ShellViewModel>();
+            DisplayRootViewFor<ShellViewModel>();
         }
 
         protected override object GetInstance(Type service, string key)
