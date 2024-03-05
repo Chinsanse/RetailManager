@@ -10,12 +10,13 @@ using System.Web.Http;
 
 namespace DataManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Cashier,Admin")]
     public class ProductController : ApiController
     {
         public List<ProductModel> Get()
         {
             ProductData data = new ProductData();
+
             return data.GetProducts();
         }
     }
