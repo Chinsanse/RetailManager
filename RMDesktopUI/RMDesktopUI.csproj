@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RMDataManager.Library\RMDataManager.Library.csproj" />
     <ProjectReference Include="..\RMDesktopUI.Library\RMDesktopUI.Library.csproj" />
   </ItemGroup>
 
