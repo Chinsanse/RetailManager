@@ -7,14 +7,20 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace RMDataManager.Library.Internal.DataAccess
 {
-    public class SqlDataAccess : IDisposable
+    internal class SqlDataAccess : IDisposable
     {
+        public SqlDataAccess(IConfiguration config)
+        {
+            _config = config;
+        }
+
         public string getConnectionString(string name)
         {
-            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
+            return _config.GetConnectionString(name);
         }
 
         public List<T> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
@@ -70,6 +76,8 @@ namespace RMDataManager.Library.Internal.DataAccess
         }
 
         private bool isClosed = false;
+
+        public IConfiguration _config { get; }
 
         public void CommitTransaction()
         {
