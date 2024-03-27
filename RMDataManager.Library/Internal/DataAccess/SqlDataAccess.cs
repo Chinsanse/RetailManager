@@ -18,14 +18,14 @@ namespace RMDataManager.Library.Internal.DataAccess
             _config = config;
         }
 
-        public string getConnectionString(string name)
+        public string GetConnectionString(string name)
         {
             return _config.GetConnectionString(name);
         }
 
         public List<T> LoadData<T, U>(string storedProcedure, U parameters, string connectionStringName)
         {
-            string connectionString = getConnectionString(connectionStringName);
+            string connectionString = GetConnectionString(connectionStringName);
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
@@ -37,7 +37,7 @@ namespace RMDataManager.Library.Internal.DataAccess
 
         public void SaveData<T>(string storedProcedure, T parameters, string connectionStringName)
         {
-            string connectionString = getConnectionString(connectionStringName);
+            string connectionString = GetConnectionString(connectionStringName);
 
             using (IDbConnection connection = new SqlConnection(connectionString))
             {
@@ -50,7 +50,7 @@ namespace RMDataManager.Library.Internal.DataAccess
 
         public void StartTransaction(string connectionStringName)
         {
-            string connectionString = getConnectionString(connectionStringName);
+            string connectionString = GetConnectionString(connectionStringName);
 
             _connection = new SqlConnection(connectionString);
             _connection.Open();
