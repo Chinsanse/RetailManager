@@ -8,14 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace RMDataManager.Library.Internal.DataAccess
 {
     public class SqlDataAccess : IDisposable, ISqlDataAccess
     {
-        public SqlDataAccess(IConfiguration config)
+        public SqlDataAccess(IConfiguration config, ILogger<SqlDataAccess> logger)
         {
             _config = config;
+            _logger = logger;
+            
         }
 
         public string GetConnectionString(string name)
@@ -78,6 +81,7 @@ namespace RMDataManager.Library.Internal.DataAccess
         private bool isClosed = false;
 
         public IConfiguration _config { get; }
+        public ILogger<SqlDataAccess> _logger { get; }
 
         public void CommitTransaction()
         {
@@ -103,10 +107,9 @@ namespace RMDataManager.Library.Internal.DataAccess
                 {
                     CommitTransaction();
                 }
-                catch
+                catch (Exception ex)
                 {
-
-
+                    _logger.LogError(ex, "Commit transaction failed in the dispose method.");
                 }
             }
 
