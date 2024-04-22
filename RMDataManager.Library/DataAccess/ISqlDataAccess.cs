@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 
-namespace RMDataManager.Library.Internal.DataAccess
+namespace RMDataManager.Library.DataAccess
 {
     public interface ISqlDataAccess
     {

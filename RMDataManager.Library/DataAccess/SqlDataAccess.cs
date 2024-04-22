@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace RMDataManager.Library.Internal.DataAccess
+namespace RMDataManager.Library.DataAccess
 {
     public class SqlDataAccess : IDisposable, ISqlDataAccess
     {
@@ -18,7 +18,7 @@ namespace RMDataManager.Library.Internal.DataAccess
         {
             _config = config;
             _logger = logger;
-            
+
         }
 
         public string GetConnectionString(string name)
