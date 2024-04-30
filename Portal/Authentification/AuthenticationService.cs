@@ -12,7 +12,7 @@ namespace Portal.Authentification
         private readonly AuthenticationStateProvider _authStateProvider;
         private readonly ILocalStorageService _localStorage;
         private readonly IConfiguration _config;
-        private string authTokenStorageKey;
+        private readonly string authTokenStorageKey;
 
         public AuthenticationService(HttpClient client,
                                      AuthenticationStateProvider authStateProvider,
