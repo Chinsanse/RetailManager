@@ -18,6 +18,10 @@
         <div class="col-auto">
             <button type="submit" class="btn btn-success">Log In</button>
         </div>
+
+        <div class="col-auto">
+            <button type="button" class="btn btn-primary" @onclick="RegisterUser">Register</button>
+        </div>
     </div>
 
 </EditForm>
@@ -27,6 +31,11 @@
 
     private bool showAuthenticationError = false;
     private string authenticationErrorText = "";
+
+    private void RegisterUser()
+    {
+        NavManager.NavigateTo("/register");
+    }
 
     private async Task ExecuteLogin()
     {
